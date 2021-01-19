@@ -4,9 +4,9 @@ const btnAdd = document.querySelector('button');
 
 const tagUl = document.querySelector('ul');
 
-const tarefas = [];
+const tarefas = JSON.parse(localStorage.getItem('list_tarefas')) || [];
 
-function showTarefas(){
+function mostraTarefa(){
 
     tagUl.innerHTML = ''
 
@@ -35,18 +35,19 @@ function showTarefas(){
 
 };
 
+mostraTarefa();
 
 function addTarefa(){
-    if(inputTarefa.value === ""){
-        alert('Campo de texto vazio, por favor preencher antes de adicionar.')
-    }else{
+        
         const texto = inputTarefa.value;
     
         tarefas.push(texto);
+
         inputTarefa.value = '';
-    
-        showTarefas();
-    }
+        
+        mostraTarefa();
+
+        salvaTarefas();
 
 };
 
@@ -54,5 +55,10 @@ btnAdd.addEventListener('click',addTarefa);
 
 function btnDeletar(indice) {
     tarefas.splice(indice, 1);
-    showTarefas();
+    mostraTarefa();
+    salvaTarefas();
+}
+
+function salvaTarefas() {
+    localStorage.setItem('list_tarefas',JSON.stringify(tarefas))
 }
