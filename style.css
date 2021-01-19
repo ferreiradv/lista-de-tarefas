@@ -77,3 +77,24 @@ a{
     font-size: 15px;
     right: 0;
 }
+
+/* @media query */
+
+@media screen and (max-width: 705px){
+
+    .div1{
+        width: 70%;
+        margin: auto;
+        padding: 25px;
+    }
+    
+}
+
+@media screen and (max-width: 505px){
+    .div1{
+        width: 80%;
+        margin: auto;
+        padding: 25px;
+    }
+    
+}
