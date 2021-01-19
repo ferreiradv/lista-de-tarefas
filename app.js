@@ -6,12 +6,12 @@ const tagUl = document.querySelector('ul');
 
 const tarefas = JSON.parse(localStorage.getItem('list_tarefas')) || [];
 
-function mostraTarefa(){
+function mostraTarefa() {
 
     tagUl.innerHTML = ''
 
-    for(tarefa of tarefas){
-      
+    for (tarefa of tarefas) {
+
         const tagLI = document.createElement('li');
         const texto = document.createTextNode(tarefa);
 
@@ -22,7 +22,7 @@ function mostraTarefa(){
 
         link.appendChild(textoLink);
 
-        link.setAttribute('onclick',`btnDeletar(${indice})`);
+        link.setAttribute('onclick', `btnDeletar(${indice})`);
 
         tagLI.appendChild(texto);
 
@@ -30,28 +30,32 @@ function mostraTarefa(){
 
         tagLI.appendChild(link);
 
-      
+
     };
 
 };
 
 mostraTarefa();
 
-function addTarefa(){
-        
+function addTarefa() {
+
+    if (inputTarefa.value == '') {
+        alert('Campo de texto de tarefa está vazio');
+    } else {
         const texto = inputTarefa.value;
-    
+
         tarefas.push(texto);
 
         inputTarefa.value = '';
-        
+
         mostraTarefa();
 
         salvaTarefas();
+    }
 
 };
 
-btnAdd.addEventListener('click',addTarefa);
+btnAdd.addEventListener('click', addTarefa);
 
 function btnDeletar(indice) {
     tarefas.splice(indice, 1);
@@ -60,5 +64,5 @@ function btnDeletar(indice) {
 }
 
 function salvaTarefas() {
-    localStorage.setItem('list_tarefas',JSON.stringify(tarefas))
+    localStorage.setItem('list_tarefas', JSON.stringify(tarefas))
 }
