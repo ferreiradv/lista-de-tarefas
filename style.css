@@ -90,11 +90,27 @@ a{
     
 }
 
-@media screen and (max-width: 505px){
+@media screen and (max-width: 500px){
     .div1{
         width: 80%;
         margin: auto;
         padding: 25px;
     }
     
+}
+
+@media screen and (max-width: 441px){
+    .div1{
+        width: 100%;
+        margin: auto;
+    }
+
+    
+    .div1 input{
+    width: 60%;
+    border-bottom: 1px solid #333333;
+    padding: 10px;
+    background-color: transparent;
+    }
+=
 }
